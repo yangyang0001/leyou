@@ -13,6 +13,9 @@
         <module>leyou-gateway</module>
         <module>leyou-item</module>
         <module>leyou-common</module>
+        <module>leyou-upload</module>
+        <module>leyou-search</module>
+        <module>leyou-goods-web</module>
     </modules>
 
     <name>leyou</name>
@@ -38,13 +41,14 @@
         <pageHelper.starter.version>1.2.10</pageHelper.starter.version>
         <leyou.latest.version>1.0.0-SNAPSHOT</leyou.latest.version>
         <fastDFS.client.version>1.26.1-RELEASE</fastDFS.client.version>
+        <lombook.version>1.18.8</lombook.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -88,6 +92,12 @@
                 <groupId>com.github.tobato</groupId>
                 <artifactId>fastdfs-client</artifactId>
                 <version>${fastDFS.client.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombook.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

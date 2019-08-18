@@ -14,5 +14,9 @@ eureka:
 zuul:
   prefix: /api
   routes:
-    item-service : /item-service/**
+    ##路由到item微服务
+    item-service : /item/**
+    ##路由到搜索微服务
+    search-service : /search/**
+# ignored-services: upload-service
 

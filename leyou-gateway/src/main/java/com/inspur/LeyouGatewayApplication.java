@@ -5,14 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
-/**
- * User: YANG
- * Date: 2019/8/7-12:18
- * Description: No Description
- */
 @SpringBootApplication
 @EnableEurekaClient
 @EnableZuulProxy
