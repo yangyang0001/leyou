@@ -1,13 +1,10 @@
-package com.inspur.config;
+package com.inspur.sms.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @program: leyou
@@ -24,7 +21,6 @@ public class LeyouCorsConfiguration {
         //1.创建cors配置
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         // 表示当前域名可以跨域访问, 如果要携带cookie 则不能写 * , 因为 * 表示所有域名都可以访问
-        corsConfiguration.addAllowedOrigin("http://www.leyou.com");
         corsConfiguration.addAllowedOrigin("http://manage.leyou.com");
         corsConfiguration.setAllowCredentials(true);    //表示允许携带cookie
         corsConfiguration.addAllowedMethod("*");        //允许任何方法都能跨域访问

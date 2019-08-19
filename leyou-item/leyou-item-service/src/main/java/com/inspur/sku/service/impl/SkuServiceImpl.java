@@ -11,6 +11,10 @@ import com.inspur.sku.mapper.SkuStockMapper;
 import com.inspur.sku.service.SkuService;
 import com.inspur.spu.mapper.SpuDetailMapper;
 import com.inspur.spu.mapper.SpuMapper;
+import com.netflix.discovery.converters.Auto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +33,8 @@ import java.util.stream.Collectors;
 @Service
 public class SkuServiceImpl implements SkuService {
 
+    private static final Logger logger = LoggerFactory.getLogger(SkuServiceImpl.class);
+
     @Autowired
     private SpuMapper spuMapper;
 
@@ -40,6 +46,9 @@ public class SkuServiceImpl implements SkuService {
 
     @Autowired
     private SkuStockMapper skuStockMapper;
+
+    @Autowired
+    private AmqpTemplate amqpTemplate;
 
 
     @Override
@@ -58,6 +67,12 @@ public class SkuServiceImpl implements SkuService {
         spuDetailMapper.insertSelective(spuBo.getSpuDetail());
 
         saveSkuAndStock(spuBo);
+        try {
+            sendMessage(spuBo.getId(), "insert");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        }
 
     }
 
@@ -97,6 +112,13 @@ public class SkuServiceImpl implements SkuService {
 
         //修改 spu_detail
         spuDetailMapper.updateByPrimaryKeySelective(spuBo.getSpuDetail());
+        try {
+            sendMessage(spuBo.getId(), "update");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        }
+
     }
 
     /**
@@ -117,5 +139,15 @@ public class SkuServiceImpl implements SkuService {
             stock.setStock(sku.getStock());
             skuStockMapper.insertSelective(stock);
         });
+    }
+
+
+    private void sendMessage(Long id, String type){
+        // 发送消息
+        try {
+            this.amqpTemplate.convertAndSend("item." + type, id);
+        } catch (Exception e) {
+            logger.error("{}商品消息发送异常，商品id：{}", type, id, e);
+        }
     }
 }

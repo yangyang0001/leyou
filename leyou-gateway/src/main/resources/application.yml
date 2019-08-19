@@ -18,5 +18,7 @@ zuul:
     item-service : /item/**
     ##路由到搜索微服务
     search-service : /search/**
+    ##路由到user服务
+    user-service : /user/**
 # ignored-services: upload-service
 

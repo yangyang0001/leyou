@@ -1,4 +1,4 @@
-package com.inspur.config;
+package com.inspur.sms.config;
 
 import com.github.tobato.fastdfs.FdfsClientConfig;
 import org.springframework.context.annotation.Configuration;

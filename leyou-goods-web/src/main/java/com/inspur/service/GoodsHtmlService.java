@@ -54,4 +54,9 @@ public class GoodsHtmlService {
             printWriter.close();
         }
     }
+
+    public void deleteHtml(Long spuId) {
+        File file = new File("D:\\nginx-1.14.1\\html\\item\\" + spuId + ".html");
+        file.deleteOnExit();
+    }
 }

@@ -10,6 +10,14 @@ spring:
     url: jdbc:mysql://localhost:3306/tb_heima_leyou?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&useSSL=false
     username: root
     password: 123456
+  rabbitmq:
+    host: 192.168.120.157
+    username: root
+    password: 123456
+    virtual-host: /
+    template:
+      exchange: LEYOU.ITEM.EXCHANGE
+    publisher-confirms: true
 
 mybatis:
   type-aliases-package: com.inspur.entity

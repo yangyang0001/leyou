@@ -7,6 +7,12 @@ spring:
   thymeleaf:
     ##开发禁用掉, 线上的用true
     cache: false
+  rabbitmq:
+    host: 192.168.120.157
+    username: root
+    password: 123456
+    virtual-host: /
+
 
 eureka:
   client:
