@@ -19,4 +19,6 @@ public interface SkuService {
     public List<Sku> querySkuListBySpuId(Long spuId);
 
     public void upateGoods(SpuBo spuBo);
+
+    public Sku getSkuById(Long skuId);
 }

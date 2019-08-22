@@ -7,11 +7,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="leyou-auth-common" />
+        <module name="leyou-auth-service" />
+        <module name="leyou-car" />
         <module name="leyou-common" />
         <module name="leyou-gateway" />
         <module name="leyou-goods-web" />
         <module name="leyou-item-interface" />
         <module name="leyou-item-service" />
+        <module name="leyou-order" />
         <module name="leyou-registry" />
         <module name="leyou-search" />
         <module name="leyou-sms" />
@@ -22,12 +26,17 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="leyou" target="1.8" />
+      <module name="leyou-auth" target="1.8" />
+      <module name="leyou-auth-common" target="1.8" />
+      <module name="leyou-auth-service" target="1.8" />
+      <module name="leyou-car" target="1.8" />
       <module name="leyou-common" target="1.8" />
       <module name="leyou-gateway" target="1.8" />
       <module name="leyou-goods-web" target="1.8" />
       <module name="leyou-item" target="1.8" />
       <module name="leyou-item-interface" target="1.8" />
       <module name="leyou-item-service" target="1.8" />
+      <module name="leyou-order" target="1.8" />
       <module name="leyou-registry" target="1.8" />
       <module name="leyou-search" target="1.8" />
       <module name="leyou-sms" target="1.8" />
@@ -40,11 +49,15 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="leyou-auth-common" options="-parameters" />
+      <module name="leyou-auth-service" options="-parameters" />
+      <module name="leyou-car" options="-parameters" />
       <module name="leyou-common" options="-parameters" />
       <module name="leyou-gateway" options="-parameters" />
       <module name="leyou-goods-web" options="-parameters" />
       <module name="leyou-item-interface" options="-parameters" />
       <module name="leyou-item-service" options="-parameters" />
+      <module name="leyou-order" options="-parameters" />
       <module name="leyou-registry" options="-parameters" />
       <module name="leyou-search" options="-parameters" />
       <module name="leyou-sms" options="-parameters" />

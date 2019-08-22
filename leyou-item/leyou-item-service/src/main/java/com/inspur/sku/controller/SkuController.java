@@ -2,6 +2,7 @@ package com.inspur.sku.controller;
 
 
 import com.inspur.entity.Sku;
+import com.inspur.entity.Spu;
 import com.inspur.entity.bo.SpuBo;
 import com.inspur.sku.service.SkuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,15 @@ public class SkuController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(skuList);
+    }
+
+    @GetMapping("/sku/{id}")
+    public ResponseEntity<Sku> getSkuById(@RequestParam("id") Long skuId) {
+        Sku sku = skuService.getSkuById(skuId);
+        if(sku == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(sku);
     }
 
 }

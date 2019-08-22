@@ -43,9 +43,14 @@ public interface GoodsApi {
             @RequestParam(value = "page", defaultValue = "1") Integer page,
             @RequestParam(value = "rows", defaultValue = "5") Integer rows );
 
+    @GetMapping("/spu/{id}")
+    public Spu getSpuBySpuId(@PathVariable("id") Long id);
+
+
+
     @GetMapping("/sku/list")
     public List<Sku> querySkuListBySpuId(@RequestParam("id") Long spuId);
 
-    @GetMapping("/spu/{id}")
-    public Spu getSpuBySpuId(@PathVariable("id") Long id);
+    @GetMapping("/sku/{id}")
+    public Sku getSkuById(@RequestParam("id") Long skuId);
 }

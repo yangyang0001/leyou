@@ -95,7 +95,11 @@ public final class CookieUtils {
 	 * @param cookieValue value
 	 * @param encodeString 编码
 	 */
-	public static final void setCookie(HttpServletRequest request, HttpServletResponse response, String cookieName, String cookieValue, String encodeString) {
+	public static final void setCookie(HttpServletRequest request,
+									   HttpServletResponse response,
+									   String cookieName,
+									   String cookieValue,
+									   String encodeString) {
 		setCookie(request,response,cookieName,cookieValue,null,encodeString, null);
 	}
 
@@ -107,14 +111,23 @@ public final class CookieUtils {
 	 * @param cookieValue value
 	 * @param cookieMaxAge 生存时间
 	 */
-	public static final void setCookie(HttpServletRequest request, HttpServletResponse response, String cookieName, String cookieValue, Integer cookieMaxAge) {
+	public static final void setCookie(HttpServletRequest request,
+									   HttpServletResponse response,
+									   String cookieName,
+									   String cookieValue,
+									   Integer cookieMaxAge) {
 		setCookie(request,response,cookieName,cookieValue,cookieMaxAge,null, null);
 	}
 
 	/**
 	 * 设置cookie，不指定httpOnly属性
 	 */
-	public static final void setCookie(HttpServletRequest request, HttpServletResponse response, String cookieName, String cookieValue, Integer cookieMaxAge, String encodeString) {
+	public static final void setCookie(HttpServletRequest request,
+									   HttpServletResponse response,
+									   String cookieName,
+									   String cookieValue,
+									   Integer cookieMaxAge,
+									   String encodeString) {
 		setCookie(request,response,cookieName,cookieValue,cookieMaxAge,encodeString, null);
 	}
 
@@ -124,7 +137,13 @@ public final class CookieUtils {
 	 * @param cookieMaxAge
 	 *            cookie生效的最大秒数
 	 */
-	public static final void setCookie(HttpServletRequest request, HttpServletResponse response, String cookieName, String cookieValue, Integer cookieMaxAge, String encodeString, Boolean httpOnly) {
+	public static final void setCookie(HttpServletRequest request,
+									   HttpServletResponse response,
+									   String cookieName,
+									   String cookieValue,
+									   Integer cookieMaxAge,
+									   String encodeString,
+									   Boolean httpOnly) {
 		try {
 			if(StringUtils.isBlank(encodeString)) {
 				encodeString = "utf-8";
@@ -138,8 +157,11 @@ public final class CookieUtils {
 			Cookie cookie = new Cookie(cookieName, cookieValue);
 			if (cookieMaxAge != null && cookieMaxAge > 0)
 				cookie.setMaxAge(cookieMaxAge);
-			if (null != request)// 设置域名的cookie
-				cookie.setDomain(getDomainName(request));
+			if (null != request) {// 设置域名的cookie
+				String domain = getDomainName(request);
+				System.out.println("domain域名信息为 ---------------------------------->:" + domain);
+				cookie.setDomain(domain);
+			}
 			cookie.setPath("/");
 
 			if(httpOnly != null) {

@@ -15,10 +15,33 @@ zuul:
   prefix: /api
   routes:
     ##路由到item微服务
-    item-service : /item/**
+#    item-service : /item/**
     ##路由到搜索微服务
-    search-service : /search/**
+#    search-service : /search/**
     ##路由到user服务
     user-service : /user/**
+    ##路由到auth服务
+    auth-service : /auth/**
+    ##路由到购物车服务
+    car-service : /cart/**
+    ##路由到订单服务
+    order-service : /order/**
+  ##是否添加域名头信息
+  add-proxy-headers: true
+  add-host-header: true
+  ##覆盖默认的敏感头信息!
+  sensitive-headers:
 # ignored-services: upload-service
 
+leyou:
+  jwt:
+    pubKeyPath: E:\\tmp\\rsa\\rsa.pub # 公钥地址
+    cookieName : LY_TOKEN
+  filter:
+    allowPaths:
+      - /api/auth
+      - /api/search
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /api/item

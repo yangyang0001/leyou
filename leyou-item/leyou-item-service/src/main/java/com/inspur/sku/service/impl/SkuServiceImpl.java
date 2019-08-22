@@ -121,6 +121,11 @@ public class SkuServiceImpl implements SkuService {
 
     }
 
+    @Override
+    public Sku getSkuById(Long skuId) {
+        return skuMapper.selectByPrimaryKey(skuId);
+    }
+
     /**
      * 新增sku 和 sku_stock
      * @param spuBo
